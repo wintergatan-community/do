@@ -117,7 +117,7 @@ class syntax_plugin_do_dolist extends DokuWiki_Syntax_Plugin
             return true;
         }
 
-        $R->doc .= $this->buildTasklistHTML($tasks, isset($data['user']), isset($data['creator']));
+        $R->doc .= $this->buildTasklistHTML($tasks, isset($data['hideCreator']), isset($data['creator']));
 
         return true;
     }
@@ -129,10 +129,11 @@ class syntax_plugin_do_dolist extends DokuWiki_Syntax_Plugin
      *
      * @return string
      */
-    public function buildTasklistHTML(array $tasks, $hideUser, $hideCreator)
+    public function buildTasklistHTML(array $tasks, $hideUser, $hideCreator, $hideDoOn, $hideStatus, $hideCompletionMessage)
     {
         $userstyle = $hideUser ? ' style="display: none;"' : '';
         $creatorstyle = $hideCreator ? ' style="display: none;"' : '';
+        $doOnStyle = $hideDoOn ? ' style="display: none;"' : '';
 
         $table = '<table class="inline plugin_do">';
         $table .= '    <tr>';
@@ -160,7 +161,8 @@ class syntax_plugin_do_dolist extends DokuWiki_Syntax_Plugin
             unset($user);
             $table .= implode(', ', $row['users']);
             $table .= '</td>';
-            $table .= '<td class="plugin_do_date">' . hsc($row['date']) . '</td>';
+            $table .= '<td class="plugin_do_date"' . $doOnStyle . '>';
+            $table .= '</td>';
             $table .= '<td class="plugin_do_status" align="center">';
 
             // task status icon...

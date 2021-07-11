@@ -1,7 +1,7 @@
 base   do
-author Andreas Gohr
+author Andreas Gohr, modified by Tom Quinn
 email  dokuwiki@cosmocode.de
-date   2021-03-16
-name   do plugin
+date   2021-07-11
+name   do plugin - WCWiki
 desc   Assign tasks within the wiki
-url    https://www.dokuwiki.org/plugin:do
+url    https://github.com/wintergatan-community/wcwiki-do
